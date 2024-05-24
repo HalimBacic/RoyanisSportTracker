@@ -1,0 +1,15 @@
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.csproj.AssemblyReference.cache
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.AssemblyInfoInputs.cache
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.AssemblyInfo.cs
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.csproj.CoreCompileInputs.cache
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.sourcelink.json
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\bin\Debug\net7.0\SportActivityAPI.Repository.deps.json
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\bin\Debug\net7.0\SportActivityAPI.Repository.runtimeconfig.json
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\bin\Debug\net7.0\SportActivityAPI.Repository.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\bin\Debug\net7.0\SportActivityAPI.Repository.pdb
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\refint\SportActivityAPI.Repository.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.pdb
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\SportActivityAPI.Repository.genruntimeconfig.cache
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Repository\obj\Debug\net7.0\ref\SportActivityAPI.Repository.dll
