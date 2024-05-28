@@ -6,6 +6,6 @@ namespace SportActivityAPI.Service.Interfaces
     public interface IUserService
     {
         public Task<UserResponse> RegisterUser(UserRequest request);
-        public UserResponse LoginUser(UserRequest userRequest);
+        public Task<UserResponse> LoginUser(UserRequest userRequest);
     }
 }

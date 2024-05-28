@@ -469,6 +469,16 @@
         "runtime": {
           "bin/placeholder/SportActivityAPI.Repository.dll": {}
         }
+      },
+      "SportActivityAPI.Share/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/SportActivityAPI.Share.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SportActivityAPI.Share.dll": {}
+        }
       }
     }
   },
@@ -1376,6 +1386,11 @@
       "type": "project",
       "path": "../SportActivityAPI.Repository/SportActivityAPI.Repository.csproj",
       "msbuildProject": "../SportActivityAPI.Repository/SportActivityAPI.Repository.csproj"
+    },
+    "SportActivityAPI.Share/1.0.0": {
+      "type": "project",
+      "path": "../SportActivityAPI.Share/SportActivityAPI.Share.csproj",
+      "msbuildProject": "../SportActivityAPI.Share/SportActivityAPI.Share.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1389,6 +1404,7 @@
       "Newtonsoft.Json >= 13.0.3",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.2",
       "SportActivityAPI.Repository >= 1.0.0",
+      "SportActivityAPI.Share >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -1421,6 +1437,9 @@
           "projectReferences": {
             "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Repository\\SportActivityAPI.Repository.csproj": {
               "projectPath": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Repository\\SportActivityAPI.Repository.csproj"
+            },
+            "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Share\\SportActivityAPI.Share.csproj": {
+              "projectPath": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Share\\SportActivityAPI.Share.csproj"
             }
           }
         }

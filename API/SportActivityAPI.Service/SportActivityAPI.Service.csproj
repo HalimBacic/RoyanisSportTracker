@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SportActivityAPI.Repository\SportActivityAPI.Repository.csproj" />
+    <ProjectReference Include="..\SportActivityAPI.Share\SportActivityAPI.Share.csproj" />
   </ItemGroup>
 
 </Project>

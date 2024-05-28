@@ -15,7 +15,16 @@ namespace SportActivityAPI.Repository.UnitsOfWork
         private IUserHasTargetRepository? UserHasTargetRepo { get; set; }
         private IUserRepository? UserRepo { get; set; }
 
-        public IActivityRepository ActivityRepository => throw new NotImplementedException();
+        public IActivityRepository ActivityRepository
+        {
+            get
+            {
+                if (ActivityRepo == null)
+                    return new ActivityRepository(_context);
+
+                return ActivityRepo;
+            }
+        }
 
         public IUserHasTargetRepository UserHasTargetRepository => throw new NotImplementedException();
 

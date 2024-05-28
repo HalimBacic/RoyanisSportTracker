@@ -54,3 +54,5 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\refint\Sp
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.genruntimeconfig.cache
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\ref\SportActivityAPI.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActivityAPI.Share.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActivityAPI.Share.pdb

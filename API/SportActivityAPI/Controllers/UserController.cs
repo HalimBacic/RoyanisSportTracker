@@ -22,5 +22,12 @@ namespace SportActivityAPI.Controllers
         {
             return Ok(await _userService.RegisterUser(request));
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<ActionResult<UserResponse>> LoginUser([FromBody] UserRequest request)
+        {
+            return Ok(await _userService.LoginUser(request));
+        }
     }
 }

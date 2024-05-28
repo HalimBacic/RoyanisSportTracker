@@ -9,6 +9,7 @@ namespace SportActivityAPI.Service.Extensions
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IActivityService, ActivityService>();
         }
     }
 }
