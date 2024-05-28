@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SportActivityAPI.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f56a5b621ad0c29e9212206e3ef9482a7b895dba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72a62ad65d4803173c033ac7ce9c8ce11eab7f2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SportActivityAPI.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SportActivityAPI.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

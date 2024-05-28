@@ -90,7 +90,7 @@ namespace SportActivityAPI.Repository.Models
 
                 entity.Property(e => e.Email).HasMaxLength(45);
 
-                entity.Property(e => e.Password).HasMaxLength(45);
+                entity.Property(e => e.Password).HasMaxLength(256);
 
                 entity.Property(e => e.Username).HasMaxLength(45);
 
@@ -118,27 +118,27 @@ namespace SportActivityAPI.Repository.Models
 
             modelBuilder.Entity<UserHasTarget>(entity =>
             {
-                entity.HasKey(e => new { e.UserId, e.ActivityId })
+                entity.HasKey(e => new { e.UserId, e.ActivityTypeId })
                     .HasName("PRIMARY")
                     .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
                 entity.ToTable("user_has_target");
 
-                entity.HasIndex(e => e.ActivityId, "fk_User_has_Activity1_Activity1_idx");
-
                 entity.HasIndex(e => e.UserId, "fk_User_has_Activity1_User1_idx");
+
+                entity.HasIndex(e => e.ActivityTypeId, "fk_User_has_target_ActivityType1_idx");
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
-                entity.Property(e => e.ActivityId).HasColumnName("Activity_Id");
+                entity.Property(e => e.ActivityTypeId).HasColumnName("ActivityType_Id");
 
                 entity.Property(e => e.Type).HasColumnType("enum('TimePerDay','DurationPerDay')");
 
-                entity.HasOne(d => d.Activity)
+                entity.HasOne(d => d.ActivityType)
                     .WithMany(p => p.UserHasTarget)
-                    .HasForeignKey(d => d.ActivityId)
+                    .HasForeignKey(d => d.ActivityTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_User_has_Activity1_Activity1");
+                    .HasConstraintName("fk_User_has_target_ActivityType1");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserHasTarget)

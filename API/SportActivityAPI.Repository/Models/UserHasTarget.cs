@@ -8,11 +8,13 @@ namespace SportActivityAPI.Repository.Models
     public partial class UserHasTarget
     {
         public int UserId { get; set; }
-        public int ActivityId { get; set; }
+        public int ActivityTypeId { get; set; }
         public DateOnly? Date { get; set; }
         public string Type { get; set; }
+        public int? Count { get; set; }
+        public int? Target { get; set; }
 
-        public virtual Activity Activity { get; set; }
+        public virtual Activitytype ActivityType { get; set; }
         public virtual User User { get; set; }
     }
 }

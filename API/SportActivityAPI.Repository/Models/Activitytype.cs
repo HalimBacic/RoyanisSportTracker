@@ -10,11 +10,13 @@ namespace SportActivityAPI.Repository.Models
         public Activitytype()
         {
             Activity = new HashSet<Activity>();
+            UserHasTarget = new HashSet<UserHasTarget>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<Activity> Activity { get; set; }
+        public virtual ICollection<UserHasTarget> UserHasTarget { get; set; }
     }
 }

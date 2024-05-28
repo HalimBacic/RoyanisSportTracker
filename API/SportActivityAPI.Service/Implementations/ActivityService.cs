@@ -27,6 +27,7 @@ namespace SportActivityAPI.Service.Implementations
             {
                 Activity activity = _mapper.Map<Activity>(request);
                 user.Activity.Add(activity);
+                await _unitOfWork.Complete();
                 return _mapper.Map<ActivityResponse>(activity);
             }
             else
@@ -40,6 +41,7 @@ namespace SportActivityAPI.Service.Implementations
             if (activity != null)
             {
                 user.Activity.Remove(activity);
+                await _unitOfWork.Complete();
             }
             else
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);
@@ -54,7 +56,7 @@ namespace SportActivityAPI.Service.Implementations
 
         private async Task<User> FindUserInDatabaseAsync(string username)
         {
-            User user = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).FirstAsync();
+            User user = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Include(x => x.Activity).FirstAsync();
 
             if (user is null)
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);

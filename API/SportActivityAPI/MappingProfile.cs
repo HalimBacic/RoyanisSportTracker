@@ -11,6 +11,7 @@ namespace SportActivityAPI
         {
             CreateMap<UserRequest, User>();
             CreateMap<User, UserResponse>();
+            CreateMap<UserRequest, UserResponse>();
             CreateMap<ActivityRequest, Activity>();
             CreateMap<Activity, ActivityResponse>();
         }

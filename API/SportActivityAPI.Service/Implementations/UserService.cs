@@ -25,12 +25,10 @@ namespace SportActivityAPI.Service.Implementations
         {
             string passwordCrypted = await _unitOfWork.UserRepository.FindBy(x => x.Username == userRequest.Username).Select(x => x.Password).FirstAsync();
 
-            if (passwordCrypted.CheckPassword(userRequest.Password))
+            if (!passwordCrypted.CheckPassword(userRequest.Password))
                 throw new UnauthorizedException(ExceptionsMessages.UserNotAuthorized);
             else
-                userRequest.Password = passwordCrypted;
-
-            return _mapper.Map<UserResponse>(userRequest);
+                return _mapper.Map<UserResponse>(userRequest);
         }
 
         public async Task<UserResponse> RegisterUser(UserRequest request)

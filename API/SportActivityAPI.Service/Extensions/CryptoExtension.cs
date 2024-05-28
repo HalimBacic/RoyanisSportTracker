@@ -22,7 +22,7 @@ namespace SportActivityAPI.Service.Extensions
             }
         }
 
-        public static bool CheckPassword(this string password, string crypted)
+        public static bool CheckPassword(this string crypted, string password)
         {
             string passCrypted = password.ComputePassword();
             if (passCrypted.Equals(crypted))

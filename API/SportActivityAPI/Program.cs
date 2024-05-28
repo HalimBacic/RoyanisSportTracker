@@ -24,6 +24,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 //Configure services
 //builder.Services.ConfigureServices();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IActivityService, ActivityService>();
 
 var app = builder.Build();
 
