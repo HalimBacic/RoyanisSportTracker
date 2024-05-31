@@ -5,7 +5,7 @@
         public int? Id { get; set; }
         public required string Name { get; set; }
         public required string Description { get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly DateActivity { get; set; }
         public int Duration { get; set; }
         public int ActivityTypeId { get; set; }
     }

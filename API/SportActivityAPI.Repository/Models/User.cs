@@ -9,8 +9,9 @@ namespace SportActivityAPI.Repository.Models
     {
         public User()
         {
-            UserHasTarget = new HashSet<UserHasTarget>();
             Activity = new HashSet<Activity>();
+            UserHasActivity = new HashSet<UserHasActivity>();
+            UserHasTarget = new HashSet<UserHasTarget>();
         }
 
         public int Id { get; set; }
@@ -18,8 +19,8 @@ namespace SportActivityAPI.Repository.Models
         public string Password { get; set; }
         public string Email { get; set; }
 
-        public virtual ICollection<UserHasTarget> UserHasTarget { get; set; }
-
         public virtual ICollection<Activity> Activity { get; set; }
+        public virtual ICollection<UserHasActivity> UserHasActivity { get; set; }
+        public virtual ICollection<UserHasTarget> UserHasTarget { get; set; }
     }
 }

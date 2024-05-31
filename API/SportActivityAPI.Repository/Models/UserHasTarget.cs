@@ -9,7 +9,7 @@ namespace SportActivityAPI.Repository.Models
     {
         public int UserId { get; set; }
         public int ActivityTypeId { get; set; }
-        public DateOnly? Date { get; set; }
+        public DateOnly DateActivity { get; set; }
         public string Type { get; set; }
         public int? Count { get; set; }
         public int? Target { get; set; }

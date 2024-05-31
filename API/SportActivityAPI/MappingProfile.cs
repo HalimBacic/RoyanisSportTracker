@@ -14,6 +14,9 @@ namespace SportActivityAPI
             CreateMap<UserRequest, UserResponse>();
             CreateMap<ActivityRequest, Activity>();
             CreateMap<Activity, ActivityResponse>();
+            CreateMap<UserHasTargetRequest, UserHasTargetResponse>();
+            CreateMap<UserHasTargetRequest, UserHasTarget>();
+            CreateMap<UserHasTarget, UserHasTargetResponse>();
         }
     }
 }

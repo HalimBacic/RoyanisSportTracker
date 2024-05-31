@@ -1,11 +1,11 @@
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.deps.json
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.dll
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.AssemblyInfoInputs.cache
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.AssemblyInfo.cs
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.csproj.CoreCompileInputs.cache
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.sourcelink.json
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.deps.json
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\bin\Debug\net7.0\SportActivityAPI.Share.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\refint\SportActivityAPI.Share.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Share\obj\Debug\net7.0\SportActivityAPI.Share.pdb

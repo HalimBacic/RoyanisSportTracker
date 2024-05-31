@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportActivityAPI.Service.Interfaces;
 using SportActivityAPI.Service.Models.Requests;
 using SportActivityAPI.Service.Models.Responses;
 
 namespace SportActivityAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ActivityController : ControllerBase

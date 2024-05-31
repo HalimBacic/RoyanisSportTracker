@@ -26,9 +26,27 @@ namespace SportActivityAPI.Repository.UnitsOfWork
             }
         }
 
-        public IUserHasTargetRepository UserHasTargetRepository => throw new NotImplementedException();
+        public IUserHasTargetRepository UserHasTargetRepository
+        {
+            get
+            {
+                if (UserHasTargetRepo == null)
+                    return new UserHasTargetRepository(_context);
 
-        public IActivityTypeRepository ActivityTypeRepository => throw new NotImplementedException();
+                return UserHasTargetRepo;
+            }
+        }
+
+        public IActivityTypeRepository ActivityTypeRepository
+        {
+            get
+            {
+                if (ActivityTypeRepo == null)
+                    return new ActivityTypeRepository(_context);
+
+                return ActivityTypeRepo;
+            }
+        }
 
         public IUserRepository UserRepository
         {

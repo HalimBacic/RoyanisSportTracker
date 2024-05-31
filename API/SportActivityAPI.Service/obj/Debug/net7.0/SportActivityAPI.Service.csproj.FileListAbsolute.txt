@@ -9,12 +9,12 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\S
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Service.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Service.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Repository.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Share.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Repository.pdb
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Share.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\SportActivityAPI.Service.csproj.CopyComplete
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\SportActivityAPI.Service.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\refint\SportActivityAPI.Service.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\SportActivityAPI.Service.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\SportActivityAPI.Service.genruntimeconfig.cache
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\obj\Debug\net7.0\ref\SportActivityAPI.Service.dll
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Share.dll
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI.Service\bin\Debug\net7.0\SportActivityAPI.Share.pdb

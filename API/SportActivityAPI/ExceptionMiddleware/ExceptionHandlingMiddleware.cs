@@ -45,6 +45,10 @@ namespace SportActivityAPI.ExceptionMiddleware
                     response.StatusCode = (int)HttpStatusCode.NotFound;
                     errorResponse.StatusCode = response.StatusCode;
                     break;
+                case InvalidQueryParametresException ex:
+                    response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    errorResponse.StatusCode = response.StatusCode;
+                    break;
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     errorResponse.Message = "Internal server error!";
