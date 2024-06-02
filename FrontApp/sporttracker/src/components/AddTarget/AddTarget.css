@@ -1,0 +1,23 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Razmak između elemenata */
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .fullWidth {
+    width: 100%;
+  }
+  
+  .button {
+    margin-top: 20px;
+  }
+  

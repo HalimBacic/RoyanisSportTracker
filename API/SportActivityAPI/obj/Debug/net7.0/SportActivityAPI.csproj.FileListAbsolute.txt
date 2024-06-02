@@ -50,7 +50,6 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticweb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.SportActivityAPI.props
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\scopedcss\bundle\SportActivityAPI.styles.css
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.csproj.CopyComplete
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\refint\SportActivityAPI.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.pdb
@@ -64,3 +63,4 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\Microsoft
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportAct.3CB760E0.Up2Date
