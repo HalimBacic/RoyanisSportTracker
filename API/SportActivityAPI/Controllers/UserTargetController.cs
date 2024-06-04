@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SportActivityAPI.Service.Interfaces;
 using SportActivityAPI.Service.Models.Requests;
 using SportActivityAPI.Service.Models.Responses;
+using System.Security.Claims;
 
 namespace SportActivityAPI.Controllers
 {
@@ -28,16 +29,18 @@ namespace SportActivityAPI.Controllers
 
         [HttpGet]
         [Route("GetTargets")]
-        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargets([FromQuery] int userId)
+        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargets()
         {
-            return Ok(await _userHasTargetService.GetAllUserTargets(userId));
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _userHasTargetService.GetAllUserTargets(username));
         }
 
         [HttpGet]
         [Route("GetTargetsFiltered")]
-        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargetsFiltered([FromQuery] int userId, [FromQuery] bool finished)
+        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargetsFiltered([FromQuery] bool finished)
         {
-            return Ok(await _userHasTargetService.GetAllUserTargetsFiltered(userId, finished));
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _userHasTargetService.GetAllUserTargetsFiltered(username, finished));
         }
 
         [HttpDelete]

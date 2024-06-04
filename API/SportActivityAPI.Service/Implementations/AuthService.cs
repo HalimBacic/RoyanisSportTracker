@@ -30,7 +30,8 @@ namespace SportActivityAPI.Service.Implementations
             {
             new Claim(JwtRegisteredClaimNames.Sub, username),
             new Claim(JwtRegisteredClaimNames.Email, email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.NameIdentifier, username)
         };
 
             var token = new System.IdentityModel.Tokens.Jwt.JwtSecurityToken(

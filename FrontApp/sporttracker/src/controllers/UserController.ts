@@ -7,7 +7,7 @@ export const RegisterUserCtrl = async (user : Partial<User>) =>
     return await RegisterUser(user);
 }
 
-export const LoginUserCtrl = async (user : Partial<User>) =>
+export const LoginUserCtrl = async (user : Partial<UserToken>) =>
 {
     return await LoginUser(user);
 }

@@ -36,8 +36,6 @@ namespace SportActivityAPI.Controllers
                 var token = _authService.GenerateToken(loged.Email, loged.Username);
                 var refreshToken = _authService.GenerateRefreshToken();
 
-                // Sačuvajte refresh token u bazi uz korisnika (implementacija nije prikazana ovde)
-
                 return Ok(new { Token = token, RefreshToken = refreshToken });
             }
 
@@ -47,13 +45,8 @@ namespace SportActivityAPI.Controllers
         [HttpPost("refresh")]
         public IActionResult Refresh([FromBody] RefreshUserTokenRequest refreshModel)
         {
-            // Proverite refresh token i korisničke podatke u bazi (implementacija nije prikazana ovde)
-            // Ako je sve u redu, generišite novi JWT token
-
             var newToken = _authService.GenerateToken(refreshModel.Email, refreshModel.Username);
             var newRefreshToken = _authService.GenerateRefreshToken();
-
-            // Ažurirajte refresh token u bazi (implementacija nije prikazana ovde)
 
             return Ok(new { Token = newToken, RefreshToken = newRefreshToken });
         }

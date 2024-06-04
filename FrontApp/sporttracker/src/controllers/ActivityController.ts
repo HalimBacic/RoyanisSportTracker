@@ -1,17 +1,32 @@
 import { Activity } from "../models/Activity";
-import {GetAllActivities, CreateActivity, DeleteActivity} from "../services/ActivityService";
+import {
+  GetAllActivitiesForUser,
+  CreateActivity,
+  DeleteActivity,
+  GetAllActivities,
+} from "../services/ActivityService";
 
-export const GetAllActivitiesCtrl = async (username : string) : Promise<Activity[]> =>
-{
-    return await GetAllActivities(username);
-}
+export const GetAllActivitiesCtrl = async (
+  token: string
+): Promise<Activity[]> => {
+  return await GetAllActivities();
+};
 
-export const CreateActivityCtrl = async (username : string, activity : Partial<Activity>) : Promise<Activity>=>
-{
-    return await CreateActivity(username, activity);
-}
+export const GetAllActivitiesForUserCtrl = async (
+  username: string
+): Promise<Activity[]> => {
+  return await GetAllActivitiesForUser(username);
+};
 
-export const DeleteActivityCtrl = async (username : string, activityId : number) =>
-{
-    return await DeleteActivity(username, activityId);
-}
+export const CreateActivityCtrl = async ( activity: Partial<Activity>
+): Promise<Activity> => {
+  console.log(activity);
+  return await CreateActivity(activity);
+};
+
+export const DeleteActivityCtrl = async (
+  username: string,
+  activityId: number
+) => {
+  return await DeleteActivity(username, activityId);
+};

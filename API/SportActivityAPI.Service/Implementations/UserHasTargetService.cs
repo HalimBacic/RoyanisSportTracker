@@ -5,7 +5,6 @@ using SportActivityAPI.Repository.UnitsOfWork;
 using SportActivityAPI.Service.Interfaces;
 using SportActivityAPI.Service.Models.Requests;
 using SportActivityAPI.Service.Models.Responses;
-using SportActivityAPI.Share.Exceptions;
 
 namespace SportActivityAPI.Service.Implementations
 {
@@ -37,17 +36,16 @@ namespace SportActivityAPI.Service.Implementations
             await _unitOfWork.Complete();
         }
 
-        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(int userId)
+        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(string username)
         {
-            if (userId == 0)
-                throw new InvalidQueryParametresException(ExceptionsMessages.InvalidParametres);
-
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
             IEnumerable<UserHasTarget> targets = await _unitOfWork.UserHasTargetRepository.FindBy(x => x.UserId == userId).ToListAsync();
             return _mapper.Map<IEnumerable<UserHasTargetResponse>>(targets);
         }
 
-        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargetsFiltered(int userId, bool finished)
+        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargetsFiltered(string username, bool finished)
         {
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
             switch (finished)
             {
                 case false:

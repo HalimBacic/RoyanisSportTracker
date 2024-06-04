@@ -42,7 +42,7 @@ class TargetTable extends Component {
       <div>
         <Container maxWidth="md" className="container">
           <Typography variant="h5" component="h2" className="title">
-            Activity List
+            Target List
           </Typography>
           <TableContainer component={Paper}>
             <Table className="table">

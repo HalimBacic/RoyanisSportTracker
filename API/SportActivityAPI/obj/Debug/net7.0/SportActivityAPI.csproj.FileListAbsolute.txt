@@ -41,7 +41,6 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActi
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActivityAPI.Repository.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActivityAPI.Service.pdb
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\SportActivityAPI.Share.pdb
-C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\staticwebassets\msbuild.SportActivityAPI.Microsoft.AspNetCore.StaticWebAssets.props
@@ -64,3 +63,4 @@ C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\Microsoft
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportAct.3CB760E0.Up2Date
+C:\Users\bacic\Documents\Royanis\API\SportActivityAPI\obj\Debug\net7.0\SportActivityAPI.MvcApplicationPartsAssemblyInfo.cs

@@ -20,12 +20,13 @@ namespace SportActivityAPI.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task<ActivityResponse> CreateActivityForUser(ActivityRequest request, string username)
+        public async Task<ActivityResponse> CreateActivityForUser(ActivityRequest request, string? username)
         {
             User user = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).FirstAsync();
             if (user != null)
             {
                 Activity activity = _mapper.Map<Activity>(request);
+                activity.UserId = user.Id;
                 user.Activity.Add(activity);
                 await _unitOfWork.Complete();
                 return _mapper.Map<ActivityResponse>(activity);
@@ -34,8 +35,11 @@ namespace SportActivityAPI.Service.Implementations
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);
         }
 
-        public async Task DeleteActivityForUser(string username, int activityId)
+        public async Task DeleteActivityForUser(string? username, int activityId)
         {
+            if (username == null)
+                throw new IncopatibleDatabaseException($"Invalid username: {username}");
+
             User user = await FindUserInDatabaseAsync(username);
             Activity activity = await _unitOfWork.ActivityRepository.FindBy(x => x.Id == activityId).FirstAsync();
             if (activity != null)
@@ -72,6 +76,13 @@ namespace SportActivityAPI.Service.Implementations
             return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
 
+        public async Task<IEnumerable<ActivityResponse>> GetActivities()
+        {
+            IEnumerable<Activitytype> activities = _unitOfWork.ActivityTypeRepository.GetAll();
+
+            return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
+        }
+
         public async Task<IEnumerable<ActivityResponse>> GetActivitiesForUser(string username)
         {
             User user = await FindUserInDatabaseAsync(username);
@@ -79,7 +90,7 @@ namespace SportActivityAPI.Service.Implementations
             return _mapper.Map<IEnumerable<ActivityResponse>>(user.Activity);
         }
 
-        public async Task<ActivityResponse> UpdateActivity(ActivityRequest request, string username)
+        public async Task<ActivityResponse> UpdateActivity(ActivityRequest request, string? username)
         {
             Activity? activityDb = await _unitOfWork.ActivityRepository.FindBy(x => x.Id == request.Id).FirstOrDefaultAsync();
             if (activityDb != null)

@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import "../Login/Login.css";
 import { LoginUserCtrl } from "../../controllers/UserController";
@@ -18,10 +19,21 @@ const Login = () => {
     });
   }
 
-  const handleClick = (event) => { 
-      var token = LoginUserCtrl(formData);
-      if (token != null)
-        return token;
+  const navigate = useNavigate();
+
+  const handleClick = async (event) => { 
+    try {
+      const token = await LoginUserCtrl(formData);
+      if (token) {
+        document.cookie = `token=${JSON.stringify(token)}; path=/`;
+        navigate('/Home');
+      } else {
+        alert('Invalid credentials');
+      }
+    } catch (err) {
+      alert('An error occurred during login. Please try again.');
+      console.error(err);
+    }
    }
 
   return (

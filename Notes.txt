@@ -1,7 +1,8 @@
 1. Database
-   Here is script for generate MySql database. User table have data about users where you can find id for user, username, password (crypted with some algorithm). Activity table has atributes defined in project document. Table ActivityType contains administrator data for predefined activities. Tables User_has_activity and User_has_target is about all activities which is logged for user and targets for user. 
+  	Here is script for generate MySql database. User table have data about users where you can find id for user, username, password (crypted with some algorithm). Activity table has atributes defined in project document. Table ActivityType contains administrator data for predefined activities. Tables User_has_activity and User_has_target is about all activities which is logged for user and targets for user. 
 
 2. Backend API
-   Backend API is .NET project which implements Repository pattern and UnitOfWork pattern. There is Log4Net library for loging operations and Automapper for mapping request to database model and database model to response. User can be register or logged and add activities for yourself or set target for yourself. 
+   	Backend API is .NET project which implements Repository pattern and UnitOfWork pattern. There is Log4Net library for loging operations and Automapper for mapping request to database model and database model to response. User can be register or logged and add activities for yourself or set target for yourself. 
 
 3. Frontend 
+	Frontend application must be run with command "chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security" from Run because of security check. 	

@@ -14,7 +14,6 @@ class AddTarget extends Component {
         count: '',
         target: ''
       },
-      //Ucitati activityTypes iz baze podataka 
       activityTypes: [
         { id: 1, name: 'Running' },
         { id: 2, name: 'Swimming' },

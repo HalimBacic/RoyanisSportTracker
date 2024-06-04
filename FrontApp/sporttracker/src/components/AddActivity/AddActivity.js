@@ -1,139 +1,150 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, TextField, Button, Typography, Box, MenuItem, Select, InputLabel, FormControl } from "@mui/material";
 import '../AddActivity/AddActivity.css';
+import { GetAllActivitiesCtrl, CreateActivityCtrl } from '../../controllers/ActivityController';
 
-class AddActivity extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formData: {
-        id: '',
-        name: '',
-        description: '',
-        dateActivity: '',
-        duration: '',
-        activityTypeId: ''
-      },
-      activityTypes: [
-        { id: 1, name: 'Running' },
-        { id: 2, name: 'Swimming' },
-        { id: 3, name: 'Cycling' }
-      ]
+const AddActivity = ({ token }) => {
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    description: '',
+    dateActivity: '',
+    duration: '',
+    activityTypeId: ''
+  });
+
+  const [activityTypes, setActivityTypes] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const act = await GetAllActivitiesCtrl(token);
+        setActivityTypes(act); 
+      } catch (error) {
+        console.error('Failed to fetch activities:', error);
+      }
     };
-  }
 
-  handleInputChange = (event) => {
+    fetchActivities();
+  }, [token]); 
+
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState(prevState => ({
-      formData: {
-        ...prevState.formData,
-        [name]: value
-      }
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
     }));
-  }
+  };
 
-  handleSelectChange = (event) => {
-    this.setState(prevState => ({
-      formData: {
-        ...prevState.formData,
-        activityTypeId: event.target.value
-      }
+  const handleSelectChange = (event) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      activityTypeId: event.target.value
     }));
-  }
+  };
 
-  handleSubmit = (event) => {
+  useEffect(() => {
+    console.log("Activity Types Updated:", activityTypes); 
+  }, [activityTypes]);
+
+  const handleSubmit =  async(event) => {
     event.preventDefault();
-    console.log('Form submitted');
-    console.log(this.state.formData);
-    // Ovde možete dodati logiku za slanje podataka na server ili drugu obradu
-  }
+    const activityData = {
+      name: formData.name,
+      description: formData.description,
+      date: formData.dateActivity,
+      duration: parseInt(formData.duration, 10),  
+      activityTypeId: parseInt(formData.activityTypeId, 10)  
+    };
+    const activity = await CreateActivityCtrl(activityData);
+    console.log(activity);
+  };
 
-  render() {
-    return (
-      <div>
-        <Container maxWidth="xs" className="container">
-          <Box
-            component="form"
-            className="form"
-            noValidate
-            autoComplete="off"
-            onSubmit={this.handleSubmit}
-          >
-            <Typography variant="h5" component="h2" className="title">
-              Add Activity
-            </Typography>
-            <TextField
-              label="Id"
-              variant="outlined"
-              required
-              className="fullWidth"
-              name="id"
-              type="number"
-              value={this.state.formData.id}
-              onChange={this.handleInputChange}
-            />
-            <TextField
-              label="Name"
-              variant="outlined"
-              required
-              className="fullWidth"
-              name="name"
-              value={this.state.formData.name}
-              onChange={this.handleInputChange}
-            />
-            <TextField
-              label="Description"
-              variant="outlined"
-              required
-              className="fullWidth"
-              name="description"
-              value={this.state.formData.description}
-              onChange={this.handleInputChange}
-            />
-            <TextField
-              label="Date Activity"
-              variant="outlined"
-              required
-              className="fullWidth"
-              name="dateActivity"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              value={this.state.formData.dateActivity}
-              onChange={this.handleInputChange}
-            />
-            <TextField
-              label="Duration"
-              variant="outlined"
-              required
-              className="fullWidth"
-              name="duration"
-              type="number"
-              value={this.state.formData.duration}
-              onChange={this.handleInputChange}
-            />
-            <FormControl variant="outlined" className="fullWidth" required>
-              <InputLabel id="activityTypeId-label">Activity Type</InputLabel>
-              <Select
-                labelId="activityTypeId-label"
-                value={this.state.formData.activityTypeId}
-                onChange={this.handleSelectChange}
-                label="Activity Type"
-              >
-                {this.state.activityTypes.map(type => (
-                  <MenuItem key={type.id} value={type.id}>
-                    {type.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Button variant="contained" color="primary" type="submit" className="fullWidth button">
-              Add Activity
-            </Button>
-          </Box>
-        </Container>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Container maxWidth="xs" className="container">
+        <Box
+          component="form"
+          className="form"
+          noValidate
+          autoComplete="off"
+        >
+          <Typography variant="h5" component="h2" className="title">
+            Add Activity
+          </Typography>
+          <TextField
+            style={{ display: 'none' }} 
+            label="Id"
+            variant="outlined"
+            required
+            className="fullWidth"
+            name="id"
+            type="number"
+            hidden
+            value={formData.id}
+            onChange={handleInputChange}
+          />
+          <TextField
+            label="Name"
+            variant="outlined"
+            required
+            className="fullWidth"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+          <TextField
+            label="Description"
+            variant="outlined"
+            required
+            className="fullWidth"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+          />
+          <TextField
+            label="Date Activity"
+            variant="outlined"
+            required
+            className="fullWidth"
+            name="dateActivity"
+            type="date"
+            InputLabelProps={{ shrink: true }}
+            value={formData.dateActivity}
+            onChange={handleInputChange}
+          />
+          <TextField
+            label="Duration"
+            variant="outlined"
+            required
+            className="fullWidth"
+            name="duration"
+            type="number"
+            value={formData.duration}
+            onChange={handleInputChange}
+          />
+          <FormControl variant="outlined" className="fullWidth" required>
+            <InputLabel id="activityTypeId-label">Activity Type</InputLabel>
+            <Select
+              labelId="activityTypeId-label"
+              value={formData.activityTypeId}
+              onChange={handleSelectChange}
+              label="Activity Type"
+            >
+              {activityTypes.map(type => (
+                <MenuItem key={type.Id} value={type.Id}>
+                  {type.Name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button variant="contained" onClick={handleSubmit} color="primary" type="button" className="fullWidth button">
+            Add Activity
+          </Button>
+        </Box>
+      </Container>
+    </div>
+  );
+};
 
 export default AddActivity;

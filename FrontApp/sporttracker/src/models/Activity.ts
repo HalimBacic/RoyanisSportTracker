@@ -22,7 +22,7 @@ export class Activity
 
     static fromJson(activity : any) : Activity
     {
-        return new Activity(activity.Id, activity.Name, activity.Description,activity.DateActivity,
-            activity.Duration, activity.ActivityTypeId);
+        return new Activity(activity.id, activity.name, activity.description,activity.dateactivity,
+            activity.duration, activity.activitytypeid);
     }
 }

@@ -5,8 +5,8 @@ namespace SportActivityAPI.Service.Interfaces
 {
     public interface IUserHasTargetService
     {
-        public Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(int userId);
-        public Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargetsFiltered(int userId, bool finished);
+        public Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(string username);
+        public Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargetsFiltered(string username, bool finished);
         public Task<UserHasTargetResponse> CreateUserTarget(UserHasTargetRequest userHasTarget);
         public Task DeleteUserTarget(DeleteUserTargetRequest deleteUserTargetRequest);
     }
