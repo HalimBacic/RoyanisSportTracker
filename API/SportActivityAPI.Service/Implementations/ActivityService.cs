@@ -83,11 +83,11 @@ namespace SportActivityAPI.Service.Implementations
             return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
 
-        public async Task<IEnumerable<ActivityResponse>> GetActivitiesForUser(string username)
+        public async Task<IEnumerable<ActivityResponse>> GetActivitiesForUser(string username, int currentpage, int pages)
         {
-            User user = await FindUserInDatabaseAsync(username);
-
-            return _mapper.Map<IEnumerable<ActivityResponse>>(user.Activity);
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
+            IEnumerable<Activity> activities = await _unitOfWork.ActivityRepository.FindBy(x => x.UserId == userId).Skip((currentpage - 1) * pages).Take(pages).ToArrayAsync();
+            return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
 
         public async Task<ActivityResponse> UpdateActivity(ActivityRequest request, string? username)

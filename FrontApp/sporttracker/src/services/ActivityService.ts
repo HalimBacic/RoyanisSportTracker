@@ -22,14 +22,21 @@ export const GetAllActivities = async () : Promise<Activity[]> =>
         return response.data.map((activity : Promise<Activity>)=>Activity.fromJson(activity));
     }
 
-export const GetAllActivitiesForUser = async (username : string) : Promise<Activity[]> =>
+export const GetAllActivitiesForUser = async (cpage : number) : Promise<Activity[]> =>
     {
-        const response = await axios.get(API_URL+'GetActivities?username='+username);
-        return response.data.map((activity : Promise<Activity>)=>Activity.fromJson(activity));
+        const token = getTokenFromCookies();
+        const response = await axios.get(API_URL+'GetActivities?currentPage='+cpage+'&pages='+10, {
+            headers:{
+                Authorization : `Bearer ${token.token}`
+            }
+        });
+        const returnData = response.data.map((activity : Promise<Activity>)=>Activity.fromJson(activity));
+        return returnData;
     }
 
 export const CreateActivity = async (activity : Partial<Activity>) =>
 {
+    console.log(activity)
     const token = getTokenFromCookies();
     const response = await axios.post(API_URL+'CreateActivity', activity, {headers:{
         Authorization : `Bearer ${token.token}`

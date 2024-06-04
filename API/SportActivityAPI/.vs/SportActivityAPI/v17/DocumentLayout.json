@@ -1,7 +1,21 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3A5066-3A3D-4CFC-8D0C-F6F30FC86675}|..\\SportActivityAPI.Service\\SportActivityAPI.Service.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi.service\\implementations\\userhastargetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\controllers\\usertargetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:controllers\\usertargetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3A5066-3A3D-4CFC-8D0C-F6F30FC86675}|..\\SportActivityAPI.Service\\SportActivityAPI.Service.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi.service\\interfaces\\iactivityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3A5066-3A3D-4CFC-8D0C-F6F30FC86675}|..\\SportActivityAPI.Service\\SportActivityAPI.Service.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi.service\\interfaces\\iuserhastargetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +23,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserHasTargetService.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Implementations\\UserHasTargetService.cs",
+              "RelativeDocumentMoniker": "..\\SportActivityAPI.Service\\Implementations\\UserHasTargetService.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Implementations\\UserHasTargetService.cs",
+              "RelativeToolTip": "..\\SportActivityAPI.Service\\Implementations\\UserHasTargetService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAADwvxoAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T20:58:39.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserTargetController.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Controllers\\UserTargetController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserTargetController.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Controllers\\UserTargetController.cs",
+              "RelativeToolTip": "Controllers\\UserTargetController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAswBsAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T20:58:12.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IActivityService.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Interfaces\\IActivityService.cs",
+              "RelativeDocumentMoniker": "..\\SportActivityAPI.Service\\Interfaces\\IActivityService.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Interfaces\\IActivityService.cs",
+              "RelativeToolTip": "..\\SportActivityAPI.Service\\Interfaces\\IActivityService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAB0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T12:02:55.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserHasTargetService.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Interfaces\\IUserHasTargetService.cs",
+              "RelativeDocumentMoniker": "..\\SportActivityAPI.Service\\Interfaces\\IUserHasTargetService.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Interfaces\\IUserHasTargetService.cs",
+              "RelativeToolTip": "..\\SportActivityAPI.Service\\Interfaces\\IUserHasTargetService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T13:34:49.02Z"
             }
           ]
         },

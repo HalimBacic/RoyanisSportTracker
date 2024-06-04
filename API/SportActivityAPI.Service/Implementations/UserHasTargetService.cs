@@ -19,9 +19,12 @@ namespace SportActivityAPI.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task<UserHasTargetResponse> CreateUserTarget(UserHasTargetRequest userHasTargetRequest)
+        public async Task<UserHasTargetResponse> CreateUserTarget(UserHasTargetRequest userHasTargetRequest, string? username)
         {
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
+            userHasTargetRequest.UserId = userId;
             UserHasTarget userHasTarget = _mapper.Map<UserHasTarget>(userHasTargetRequest);
+            userHasTarget.Count = 0;
             await _unitOfWork.UserHasTargetRepository.AddAsync(userHasTarget);
             await _unitOfWork.Complete();
             return _mapper.Map<UserHasTargetResponse>(userHasTarget);
@@ -36,10 +39,10 @@ namespace SportActivityAPI.Service.Implementations
             await _unitOfWork.Complete();
         }
 
-        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(string username)
+        public async Task<IEnumerable<UserHasTargetResponse>> GetAllUserTargets(string username, int currentpage, int pages)
         {
             int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
-            IEnumerable<UserHasTarget> targets = await _unitOfWork.UserHasTargetRepository.FindBy(x => x.UserId == userId).ToListAsync();
+            IEnumerable<UserHasTarget> targets = await _unitOfWork.UserHasTargetRepository.FindBy(x => x.UserId == userId).Skip((currentpage - 1) * pages).Take(pages).ToListAsync();
             return _mapper.Map<IEnumerable<UserHasTargetResponse>>(targets);
         }
 

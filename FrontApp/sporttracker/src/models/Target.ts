@@ -2,22 +2,23 @@ export class UserTarget
 {
     UserId : number;
     ActivityTypeId : number;
-    Date: Date;
+    DateActivity: Date;
     Type: number;
     Count: number;
     Target: number;
-    constructor(userId : number,ActivityTypeId : number,Date : Date,Type : number,Count : number,Target: number)
+    
+    constructor(userId : number,ActivityTypeId : number,DateActivity : Date,Type : number,Count : number,Target: number)
     {
         this.UserId = userId;
         this.ActivityTypeId = ActivityTypeId;
-        this.Date = Date;
+        this.DateActivity = DateActivity;
         this.Type = Type;
         this.Count = Count;
         this.Target = Target;
     }
 
-    static FronJson(target : any) : UserTarget
+    static fromJson(target : any) : UserTarget
     {
-        return new UserTarget(target.UserId, target.ActivityTypeId,target.Date,target.Type,target.Count,target.Target);
+        return new UserTarget(target.userId, target.activityTypeId,target.dateActivity,target.type,target.count,target.target);
     }
 }

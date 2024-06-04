@@ -21,7 +21,7 @@ const AddActivity = ({ token }) => {
         const act = await GetAllActivitiesCtrl(token);
         setActivityTypes(act); 
       } catch (error) {
-        console.error('Failed to fetch activities:', error);
+        alert('Failed to fetch activities:', error);
       }
     };
 
@@ -43,19 +43,16 @@ const AddActivity = ({ token }) => {
     }));
   };
 
-  useEffect(() => {
-    console.log("Activity Types Updated:", activityTypes); 
-  }, [activityTypes]);
-
   const handleSubmit =  async(event) => {
     event.preventDefault();
     const activityData = {
       name: formData.name,
       description: formData.description,
-      date: formData.dateActivity,
+      dateActivity: formData.dateActivity,
       duration: parseInt(formData.duration, 10),  
       activityTypeId: parseInt(formData.activityTypeId, 10)  
     };
+
     const activity = await CreateActivityCtrl(activityData);
     console.log(activity);
   };

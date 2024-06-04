@@ -1,100 +1,107 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography, Box } from "@mui/material";
 import '../ActivityTable/ActivityTable.css';
+import { GetAllActivitiesForUserCtrl, GetAllActivitiesCtrl } from '../../controllers/ActivityController'; 
 
-class ActivityTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPage: 1,
-      totalPages: 1,
-      activities: [] // Ove podatke ćete popuniti izvan ove komponente
-    };
-  }
+const ActivityTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [activities, setActivities] = useState([]);
+  const [activityTypes, setActivityTypes] = useState([]);
 
-  componentDidMount() {
-    // Ovdje možete pozvati metodu za učitavanje podataka
-    this.loadActivities();
-  }
+  useEffect(() => {
+    loadActivities();
+    loadActivityTypes();
+  }, [currentPage]);
 
-  loadActivities = () => {
-    // Ovde možete dodati logiku za učitavanje podataka sa servera
-    // Na primer, koristite fetch ili axios za preuzimanje podataka
-    // I zatim ažurirajte stanje sa preuzetim podacima i ukupnim brojem stranica
-  }
+  const loadActivities = () => {
+    GetAllActivitiesForUserCtrl(currentPage)
+      .then(data => {
+        setActivities(data);
+        setTotalPages(Math.ceil(data.length / 10)); 
+      })
+      .catch(error => {
+        console.error("Error loading activities:", error);
+      });
+  };
 
-  handlePreviousPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.max(prevState.currentPage - 1, 1)
-    }), this.loadActivities);
-  }
+  const loadActivityTypes = () => {
+    GetAllActivitiesCtrl()
+      .then(data => {
+        setActivityTypes(data);
+      })
+      .catch(error => {
+        console.error("Error loading activity types:", error);
+      });
+  };
 
-  handleNextPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.min(prevState.currentPage + 1, prevState.totalPages)
-    }), this.loadActivities);
-  }
+  const getActivityTypeName = (typeId) => {
+    const type = activityTypes.find(type => type.Id === typeId);
+    return type ? type.Name : 'Unknown';
+  };
 
-  render() {
-    const { currentPage, totalPages, activities } = this.state;
+  const handlePreviousPage = () => {
+    setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
+  };
 
-    return (
-      <div>
-        <Container maxWidth="md" className="container">
-          <Typography variant="h5" component="h2" className="title">
-            Activity List
-          </Typography>
-          <TableContainer component={Paper}>
-            <Table className="table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Id</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell>Date Activity</TableCell>
-                  <TableCell>Duration</TableCell>
-                  <TableCell>Activity Type Id</TableCell>
+  const handleNextPage = () => {
+    setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages));
+  };
+
+  return (
+    <div>
+      <Container maxWidth="md" className="container">
+        <Typography variant="h5" component="h2" className="title">
+          Activity List
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table className="table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Date Activity</TableCell>
+                <TableCell>Duration</TableCell>
+                <TableCell>Activity Type</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {activities.map((activity) => (
+                <TableRow key={activity.Id}>
+                  <TableCell>{activity.Name}</TableCell>
+                  <TableCell>{activity.Description}</TableCell>
+                  <TableCell>{activity.DateActivity}</TableCell>
+                  <TableCell>{activity.Duration}</TableCell>
+                  <TableCell>{getActivityTypeName(activity.ActivityTypeId)}</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {activities.map((activity) => (
-                  <TableRow key={activity.id}>
-                    <TableCell>{activity.id}</TableCell>
-                    <TableCell>{activity.name}</TableCell>
-                    <TableCell>{activity.description}</TableCell>
-                    <TableCell>{activity.dateActivity}</TableCell>
-                    <TableCell>{activity.duration}</TableCell>
-                    <TableCell>{activity.activityTypeId}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Box className="pagination">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </Button>
-            <Typography variant="body1" component="span">
-              Page {currentPage} of {totalPages}
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </Button>
-          </Box>
-        </Container>
-      </div>
-    );
-  }
-}
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Box className="pagination">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </Button>
+          <Typography variant="body1" component="span">
+            Page {currentPage} of {totalPages}
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </Box>
+      </Container>
+    </div>
+  );
+};
 
 export default ActivityTable;

@@ -22,10 +22,10 @@ namespace SportActivityAPI.Controllers
 
         [HttpGet]
         [Route("GetActivities")]
-        public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivitiesForUser()
+        public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivitiesForUser([FromQuery] int currentPage, [FromQuery] int pages)
         {
             string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return Ok(await _activityService.GetActivitiesForUser(username));
+            return Ok(await _activityService.GetActivitiesForUser(username, currentPage, pages));
         }
 
         [HttpGet]

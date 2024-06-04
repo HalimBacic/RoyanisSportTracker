@@ -24,15 +24,16 @@ namespace SportActivityAPI.Controllers
         [Route("AddTarget")]
         public async Task<ActionResult<UserHasTargetResponse>> AddTarget([FromBody] UserHasTargetRequest request)
         {
-            return Ok(await _userHasTargetService.CreateUserTarget(request));
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _userHasTargetService.CreateUserTarget(request, username));
         }
 
         [HttpGet]
         [Route("GetTargets")]
-        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargets()
+        public async Task<ActionResult<IEnumerable<UserHasTargetResponse>>> GetAllTargets([FromQuery] int currentPage, [FromQuery] int pages)
         {
             string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return Ok(await _userHasTargetService.GetAllUserTargets(username));
+            return Ok(await _userHasTargetService.GetAllUserTargets(username, currentPage, pages));
         }
 
         [HttpGet]

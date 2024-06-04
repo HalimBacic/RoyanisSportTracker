@@ -1,100 +1,114 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography, Box } from "@mui/material";
 import '../TargetTable/TargetTable.css';
+import { GetAllActivitiesCtrl } from '../../controllers/ActivityController'; 
+import { GetTargetsCtrl} from '../../controllers/UserTargetController';
 
-class TargetTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPage: 1,
-      totalPages: 1,
-      activities: [] // Ove podatke ćete popuniti izvan ove komponente
-    };
-  }
 
-  componentDidMount() {
-    // Ovdje možete pozvati metodu za učitavanje podataka
-    this.loadActivities();
-  }
+const TargetTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [targets, setTargets] = useState([]);
+  const [activityTypes, setActivityTypes] = useState([]);
 
-  loadActivities = () => {
-    // Ovde možete dodati logiku za učitavanje podataka sa servera
-    // Na primer, koristite fetch ili axios za preuzimanje podataka
-    // I zatim ažurirajte stanje sa preuzetim podacima i ukupnim brojem stranica
-  }
+  useEffect(() => {
+    loadTargets();
+    loadActivityTypes();
+  }, [currentPage]);
+  
 
-  handlePreviousPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.max(prevState.currentPage - 1, 1)
-    }), this.loadActivities);
-  }
+  const loadActivityTypes = () => {
+    GetAllActivitiesCtrl()
+      .then(data => {
+        setActivityTypes(data);
+      })
+      .catch(error => {
+        console.error("Error loading activity types:", error);
+      });
+  };
 
-  handleNextPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.min(prevState.currentPage + 1, prevState.totalPages)
-    }), this.loadActivities);
-  }
+  const loadTargets = () => {
+    GetTargetsCtrl(currentPage)
+      .then(data => {
+        setTargets(data);
+        setTotalPages(Math.ceil(data.length / 10)); 
+      })
+      .catch(error => {
+        console.error("Error loading targets:", error);
+      });
+  };
 
-  render() {
-    const { currentPage, totalPages, activities } = this.state;
+  const handlePreviousPage = () => {
+    setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
+  };
 
-    return (
-      <div>
-        <Container maxWidth="md" className="container">
-          <Typography variant="h5" component="h2" className="title">
-            Target List
-          </Typography>
-          <TableContainer component={Paper}>
-            <Table className="table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>UserId</TableCell>
-                  <TableCell>ActivityTypeId</TableCell>
-                  <TableCell>Date</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Count</TableCell>
-                  <TableCell>Target</TableCell>
+  const handleNextPage = () => {
+    setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages));
+  };
+
+  const getActivityTypeName = (typeId) => {
+    const type = activityTypes.find(type => type.Id === typeId);
+    return type ? type.Name : 'Unknown';
+  };
+
+  const getActivityType = (typeId) => {
+    return typeId === 0 ? 'TimePerDay' : 'DurationPerDay';
+  };
+
+  return (
+    <div>
+      <Container maxWidth="md" className="container">
+        <Typography variant="h5" component="h2" className="title">
+          Target List
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table className="table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ActivityTypeId</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Count</TableCell>
+                <TableCell>Target</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {targets.map((activity,index) => (
+                <TableRow key={index}>
+                  <TableCell>{getActivityTypeName(activity.ActivityTypeId)}</TableCell>
+                  <TableCell>{activity.DateActivity}</TableCell>
+                  <TableCell>{getActivityType(activity.Type)}</TableCell>
+                  <TableCell>{activity.Count}</TableCell>
+                  <TableCell>{activity.Target}</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {activities.map((activity) => (
-                  <TableRow key={activity.userId}>
-                    <TableCell>{activity.userId}</TableCell>
-                    <TableCell>{activity.activityTypeId}</TableCell>
-                    <TableCell>{activity.date}</TableCell>
-                    <TableCell>{activity.type}</TableCell>
-                    <TableCell>{activity.count}</TableCell>
-                    <TableCell>{activity.target}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Box className="pagination">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </Button>
-            <Typography variant="body1" component="span">
-              Page {currentPage} of {totalPages}
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </Button>
-          </Box>
-        </Container>
-      </div>
-    );
-  }
-}
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Box className="pagination">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </Button>
+          <Typography variant="body1" component="span">
+            Page {currentPage} of {totalPages}
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </Box>
+      </Container>
+    </div>
+  );
+};
 
 export default TargetTable;

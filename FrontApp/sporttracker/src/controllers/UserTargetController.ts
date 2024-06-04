@@ -1,14 +1,14 @@
 import { UserTarget } from "../models/Target";
 import {AddTarget, GetTargets, GetTargetsFiltered, DeleteTarget } from "../services/UserTargetService";
 
-export const AddTargetCtrl = async (user : Partial<UserTarget>) =>
+export const AddTargetCtrl = async (usertarget : Partial<UserTarget>) =>
 {
-    return await AddTarget(user);
+    return await AddTarget(usertarget);
 }
 
-export const GetTargetsCtrl = async (userId : number) =>
+export const GetTargetsCtrl = async (page : number) =>
 {
-    return await GetTargets(userId);
+    return await GetTargets(page);
 }
 
 export const GetTargetsFilteredCtrl = async (userId : number, finished : Boolean) =>

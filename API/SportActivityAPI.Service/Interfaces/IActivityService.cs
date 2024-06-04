@@ -5,7 +5,7 @@ namespace SportActivityAPI.Service.Interfaces
 {
     public interface IActivityService
     {
-        public Task<IEnumerable<ActivityResponse>> GetActivitiesForUser(string username);
+        public Task<IEnumerable<ActivityResponse>> GetActivitiesForUser(string username, int currentPage, int pages);
         public Task<IEnumerable<ActivityResponse>> GetActivities();
         public Task<IEnumerable<ActivityResponse>> FilterActivities(DateOnly? date, int ActivityType);
         public Task<IEnumerable<ActivityResponse>> FindActivities(string? name, string? description);

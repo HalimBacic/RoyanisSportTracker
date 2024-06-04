@@ -13,9 +13,9 @@ export const GetAllActivitiesCtrl = async (
 };
 
 export const GetAllActivitiesForUserCtrl = async (
-  username: string
+  cpage: number
 ): Promise<Activity[]> => {
-  return await GetAllActivitiesForUser(username);
+  return await GetAllActivitiesForUser(cpage);
 };
 
 export const CreateActivityCtrl = async ( activity: Partial<Activity>

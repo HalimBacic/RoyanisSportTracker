@@ -4,16 +4,37 @@ import { Activity } from '../models/Activity';
 
 const API_URL='https://localhost:7294/api/UserTarget/';
 
+const getTokenFromCookies = () => {
+    const cookies = document.cookie.split('; ');
+    const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
+    if (tokenCookie) {
+      const tokenstr = tokenCookie.split('=')[1];
+      return JSON.parse(tokenstr);
+    }
+    return null;
+  };
+
 export const AddTarget = async (usertarget : Partial<UserTarget>) : Promise<UserTarget> =>
 {
-    const response = await axios.post(API_URL+'/AddTarget', usertarget);
+    const token = getTokenFromCookies();
+    const response = await axios.post(API_URL+'AddTarget', usertarget, {headers:
+        {
+            'Authorization' : `Bearer ${token.token}`
+        }
+    });
     return response.data;
 }
 
-export const GetTargets = async (userId : number) : Promise<UserTarget[]>=>
+export const GetTargets = async (page:number) : Promise<UserTarget[]>=>
 {
-    const response = await axios.get(API_URL+'/GetTargets?userId='+userId);
-    return response.data.map((target : Promise<UserTarget>)=>Activity.fromJson(target));
+    const token = getTokenFromCookies();
+    const response = await axios.get(API_URL+'GetTargets?currentPage='+page+'&pages='+10, {
+        headers: {
+            'Authorization' : `Bearer ${token.token}`
+        }
+    });
+    
+    return response.data.map((target : Promise<UserTarget>)=>UserTarget.fromJson(target));
 }
 
 export const GetTargetsFiltered = async (userId : number, finished : Boolean) =>
