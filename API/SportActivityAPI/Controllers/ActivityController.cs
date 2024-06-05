@@ -28,6 +28,30 @@ namespace SportActivityAPI.Controllers
             return Ok(await _activityService.GetActivitiesForUser(username, currentPage, pages));
         }
 
+        [HttpPost]
+        [Route("GetActivitiesSearch")]
+        public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivitiesSearch([FromBody] SearchRequest request)
+        {
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _activityService.FindActivities(username, request.Name, request.Description));
+        }
+
+        [HttpGet]
+        [Route("SearchByDate")]
+        public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivitiesByDateOrType([FromQuery] DateOnly? date)
+        {
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _activityService.FindActivitiesByDate(username, date));
+        }
+
+        [HttpGet]
+        [Route("SearchByType")]
+        public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivitiesByDateOrType([FromQuery] int type)
+        {
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _activityService.FindActivitiesByType(username, type));
+        }
+
         [HttpGet]
         [Route("GetAllActivities")]
         public async Task<ActionResult<IEnumerable<ActivityResponse>>> GetActivities()
@@ -36,12 +60,22 @@ namespace SportActivityAPI.Controllers
         }
 
 
+
+
         [HttpPost]
         [Route("CreateActivity")]
         public async Task<ActionResult<ActivityResponse>> CreateActivityForUser([FromBody] ActivityRequest request)
         {
             string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return Ok(await _activityService.CreateActivityForUser(request, username));
+        }
+
+        [HttpPut]
+        [Route("UpdateActivity")]
+        public async Task<ActionResult<ActivityResponse>> UpdateActivityForUser([FromBody] ActivityRequest request)
+        {
+            string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _activityService.UpdateActivity(request));
         }
 
         [HttpDelete]

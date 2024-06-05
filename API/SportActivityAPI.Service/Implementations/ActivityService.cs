@@ -37,41 +37,52 @@ namespace SportActivityAPI.Service.Implementations
 
         public async Task DeleteActivityForUser(string? username, int activityId)
         {
-            if (username == null)
-                throw new IncopatibleDatabaseException($"Invalid username: {username}");
-
-            User user = await FindUserInDatabaseAsync(username);
             Activity activity = await _unitOfWork.ActivityRepository.FindBy(x => x.Id == activityId).FirstAsync();
             if (activity != null)
             {
-                user.Activity.Remove(activity);
+                _unitOfWork.ActivityRepository.Delete(activity);
                 await _unitOfWork.Complete();
             }
             else
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);
         }
 
-        public async Task<IEnumerable<ActivityResponse>> FilterActivities(DateOnly? date, int ActivityType)
+        private async Task<IEnumerable<ActivityResponse>> FilterActivities(string username, DateOnly? date, int? activityType)
         {
-            IEnumerable<Activity> activities = await _unitOfWork.ActivityRepository.FindBy(x => x.ActivityTypeId == ActivityType).ToListAsync();
+            var activities = _unitOfWork.ActivityRepository.FindBy(x => x.User.Username == username);
 
-            if (date is not null)
-                activities.Where(x => x.DateActivity == date);
+            if (date is not null && activityType is not null)
+            {
+                activities = activities.Where(x => x.DateActivity == date && x.ActivityTypeId == activityType);
+            }
+            else
+            {
+                if (date is not null)
+                    activities = activities.Where(x => x.DateActivity == date);
+
+                if (activityType is not null)
+                    activities = activities.Where(x => x.ActivityTypeId == activityType);
+            }
 
             return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
 
-        public async Task<IEnumerable<ActivityResponse>> FindActivities(string? name, string? description)
+        public async Task<IEnumerable<ActivityResponse>> FindActivities(string? username, string? name, string? description)
         {
-            if (name == null && description == null)
-                throw new InvalidQueryParametresException(ExceptionsMessages.BothParametresNull);
+            var activities = _unitOfWork.ActivityRepository.FindBy(x => x.User.Username == username);
 
-            IEnumerable<Activity> activities = _unitOfWork.ActivityRepository.GetAll();
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description))
+            {
+                activities = activities.Where(x => x.Name.Contains(name) && x.Description.Contains(description));
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(name))
+                    activities = activities.Where(x => x.Name.Contains(name));
 
-            if (name is not null)
-                activities.Where(x => x.Name.Contains(name));
-            if (description is not null)
-                activities.Where(x => x.Description.Contains(description));
+                if (!string.IsNullOrEmpty(description))
+                    activities = activities.Where(x => x.Description.Contains(description));
+            }
 
             return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
@@ -90,14 +101,14 @@ namespace SportActivityAPI.Service.Implementations
             return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
 
-        public async Task<ActivityResponse> UpdateActivity(ActivityRequest request, string? username)
+        public async Task<ActivityResponse> UpdateActivity(ActivityRequest request)
         {
             Activity? activityDb = await _unitOfWork.ActivityRepository.FindBy(x => x.Id == request.Id).FirstOrDefaultAsync();
-            if (activityDb != null)
+            if (activityDb == null)
             {
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);
             }
-            _mapper.Map(_mapper.Map<Activity>(request), activityDb);
+            _mapper.Map(request, activityDb);
             await _unitOfWork.Complete();
             return _mapper.Map<ActivityResponse>(activityDb);
         }
@@ -110,6 +121,20 @@ namespace SportActivityAPI.Service.Implementations
                 throw new IncopatibleDatabaseException(ExceptionsMessages.NotFoundIndatabase);
 
             return user;
+        }
+
+        public async Task<IEnumerable<ActivityResponse>> FindActivitiesByDate(string? username, DateOnly? date)
+        {
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
+            IEnumerable<Activity> activities = await _unitOfWork.ActivityRepository.FindBy(x => x.UserId == userId && x.DateActivity == date).ToArrayAsync();
+            return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
+        }
+
+        public async Task<IEnumerable<ActivityResponse>> FindActivitiesByType(string? username, int type)
+        {
+            int userId = await _unitOfWork.UserRepository.FindBy(x => x.Username == username).Select(x => x.Id).FirstAsync();
+            IEnumerable<Activity> activities = await _unitOfWork.ActivityRepository.FindBy(x => x.UserId == userId && x.ActivityTypeId == type).ToArrayAsync();
+            return _mapper.Map<IEnumerable<ActivityResponse>>(activities);
         }
     }
 }

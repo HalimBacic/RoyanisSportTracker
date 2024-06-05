@@ -4,10 +4,13 @@ import {
   CreateActivity,
   DeleteActivity,
   GetAllActivities,
+  SearchActivity,
+  SearchDateActivity,
+  SearchTypeActivity,
+  UpdateActivity
 } from "../services/ActivityService";
 
 export const GetAllActivitiesCtrl = async (
-  token: string
 ): Promise<Activity[]> => {
   return await GetAllActivities();
 };
@@ -18,15 +21,33 @@ export const GetAllActivitiesForUserCtrl = async (
   return await GetAllActivitiesForUser(cpage);
 };
 
+export const UpdateActivityCtrl = async ( activity: Partial<Activity>
+): Promise<Activity> => {
+  return await UpdateActivity(activity);
+};
+
 export const CreateActivityCtrl = async ( activity: Partial<Activity>
 ): Promise<Activity> => {
-  console.log(activity);
   return await CreateActivity(activity);
 };
 
+export const SearchActivityCtrl = async ( activity: Partial<Activity>
+): Promise<Activity[]> => {
+  return await SearchActivity(activity);
+};
+
+export const SearchDateActivityCtrl = async ( date: Partial<Date>
+): Promise<Activity[]> => {
+  return await SearchDateActivity(date);
+};
+
+export const SearchTypeActivityCtrl = async ( type: Partial<number>
+): Promise<Activity[]> => {
+  return await SearchTypeActivity(type);
+};
+
 export const DeleteActivityCtrl = async (
-  username: string,
   activityId: number
 ) => {
-  return await DeleteActivity(username, activityId);
+  return await DeleteActivity(activityId);
 };

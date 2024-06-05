@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import { Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography, Box } from "@mui/material";
 import '../TargetTable/TargetTable.css';
 import { GetAllActivitiesCtrl } from '../../controllers/ActivityController'; 
 import { GetTargetsCtrl} from '../../controllers/UserTargetController';
 
+const useStyles = makeStyles({
+  greenCell: {
+    backgroundColor: 'green',
+    color:'white'
+  },
+  redCell: {
+    backgroundColor: 'red',
+    color:'white'
+  },
+});
 
 const TargetTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [targets, setTargets] = useState([]);
   const [activityTypes, setActivityTypes] = useState([]);
+  const classes = useStyles();
 
   useEffect(() => {
     loadTargets();
@@ -78,7 +90,9 @@ const TargetTable = () => {
                   <TableCell>{getActivityTypeName(activity.ActivityTypeId)}</TableCell>
                   <TableCell>{activity.DateActivity}</TableCell>
                   <TableCell>{getActivityType(activity.Type)}</TableCell>
-                  <TableCell>{activity.Count}</TableCell>
+                  <TableCell className={activity.Count >= activity.Target ? classes.greenCell : classes.redCell}>
+              {activity.Count}
+            </TableCell>
                   <TableCell>{activity.Target}</TableCell>
                 </TableRow>
               ))}
