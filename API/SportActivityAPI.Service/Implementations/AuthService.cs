@@ -21,8 +21,10 @@ namespace SportActivityAPI.Service.Implementations
             return Guid.NewGuid().ToString();
         }
 
+
         public string GenerateToken(string email, string username)
         {
+            //Method for generate JWT token for authentification
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

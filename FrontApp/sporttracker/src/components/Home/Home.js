@@ -5,10 +5,13 @@ import AddActivity from "../AddActivity/AddActivity";
 import ActivityTable from "../ActivityTable/ActivityTable";
 import TargetTable from "../TargetTable/TargetTable";
 import { Button } from "@mui/material";
+import { IconButton } from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 
 const Home = () => {
   const [isActivity, setIsActivity] = useState(true);
+  const [refreshView, setRefreshView] = useState(true);
   const [token, setToken] = useState("");
 
   const getTokenFromCookies = () => {
@@ -27,6 +30,10 @@ const Home = () => {
   }, [])
   
 
+  const toggleRefresh = () => {
+    setRefreshView((refreshView) => !refreshView);
+  };
+  
   const toggleView = () => {
     setIsActivity((prevIsActivity) => !prevIsActivity);
   };
@@ -35,6 +42,7 @@ const Home = () => {
     <div className="container">
       <AddActivity></AddActivity>
       <div className="centralContainer">
+        <div style={{display:"flex", flexDirection:"row"}}>
         <Button onClick={toggleView}           
             variant="contained"
             color="primary"
@@ -42,7 +50,11 @@ const Home = () => {
             className="fullWidth"> 
           {isActivity ? "Show Target" : "Show Activity"}
         </Button>
-        {isActivity ? <ActivityTable /> : <TargetTable />}
+        <IconButton color="primary" onClick={toggleRefresh}>
+      <RefreshIcon />
+    </IconButton>
+        </div>
+        {isActivity ? <ActivityTable refresh={refreshView}/> : <TargetTable refresh={refreshView}/>}
       </div>
       <AddTarget></AddTarget>
     </div>

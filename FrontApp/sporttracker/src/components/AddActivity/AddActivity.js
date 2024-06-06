@@ -21,7 +21,7 @@ const AddActivity = ({ token }) => {
         const act = await GetAllActivitiesCtrl(token);
         setActivityTypes(act); 
       } catch (error) {
-        alert('Failed to fetch activities:', error);
+        alert('Failed to fetch activities:' + error);
       }
     };
 
@@ -53,8 +53,13 @@ const AddActivity = ({ token }) => {
       activityTypeId: parseInt(formData.activityTypeId, 10)  
     };
 
-    const activity = await CreateActivityCtrl(activityData);
-    console.log(activity);
+    try{
+      await CreateActivityCtrl(activityData);
+    }
+    catch(error)
+    {
+      alert("Problem with create activity:"+error);
+    }
   };
 
   return (

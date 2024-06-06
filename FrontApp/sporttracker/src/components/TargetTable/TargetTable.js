@@ -5,18 +5,23 @@ import '../TargetTable/TargetTable.css';
 import { GetAllActivitiesCtrl } from '../../controllers/ActivityController'; 
 import { GetTargetsCtrl} from '../../controllers/UserTargetController';
 
+
 const useStyles = makeStyles({
   greenCell: {
     backgroundColor: 'green',
-    color:'white'
+    color:'white !important'
   },
   redCell: {
     backgroundColor: 'red',
-    color:'white'
+    color:'white !important'
+  },
+  tableContainer: {
+    maxHeight: 350, 
+    overflowY: 'auto',
   },
 });
 
-const TargetTable = () => {
+const TargetTable = ({refresh}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [targets, setTargets] = useState([]);
@@ -26,7 +31,7 @@ const TargetTable = () => {
   useEffect(() => {
     loadTargets();
     loadActivityTypes();
-  }, [currentPage]);
+  }, [currentPage, refresh]);
   
 
   const loadActivityTypes = () => {
@@ -35,7 +40,7 @@ const TargetTable = () => {
         setActivityTypes(data);
       })
       .catch(error => {
-        console.error("Error loading activity types:", error);
+        alert("Error loading activity types:", error);
       });
   };
 
@@ -46,7 +51,7 @@ const TargetTable = () => {
         setTotalPages(Math.ceil(data.length / 10)); 
       })
       .catch(error => {
-        console.error("Error loading targets:", error);
+        alert("Error loading targets:", error);
       });
   };
 
@@ -70,11 +75,8 @@ const TargetTable = () => {
   return (
     <div>
       <Container maxWidth="md" className="container">
-        <Typography variant="h5" component="h2" className="title">
-          Target List
-        </Typography>
-        <TableContainer component={Paper}>
-          <Table className="table">
+        <TableContainer component={Paper} className={classes.tableContainer}>
+          <Table className="table" stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell>ActivityTypeId</TableCell>

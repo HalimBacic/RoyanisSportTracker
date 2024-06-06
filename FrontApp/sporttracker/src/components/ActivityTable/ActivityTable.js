@@ -20,6 +20,8 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  InputLabel,
+  FormControl
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import EditIcon from "@material-ui/icons/Edit";
@@ -34,8 +36,16 @@ import {
   UpdateActivityCtrl,
   DeleteActivityCtrl
 } from "../../controllers/ActivityController";
+import { makeStyles } from '@material-ui/core/styles';
 
-const ActivityTable = () => {
+const useStyles = makeStyles((theme) => ({
+  tableContainer: {
+    maxHeight: 300, 
+    overflowY: 'auto',
+  },
+}));
+
+const ActivityTable = ({refresh}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [activities, setActivities] = useState([]);
@@ -46,6 +56,7 @@ const ActivityTable = () => {
   const [selectedType, setselectedType] = useState(0);
   const [currentActivity, setCurrentActivity] = useState({});
   const [open, setOpen] = useState(false);
+  const classes = useStyles();
 
   useEffect(() => {
     loadActivities();
@@ -55,12 +66,12 @@ const ActivityTable = () => {
         const act = await GetAllActivitiesCtrl();
         setActivityTypes(act);
       } catch (error) {
-        alert("Failed to fetch activities:", error);
+        alert("Failed to fetch activities:" + error);
       }
     };
 
     fetchActivities();
-  }, [currentPage]);
+  }, [currentPage,refresh]);
 
   const handleSearch = () => {
     const searchData = {
@@ -73,7 +84,7 @@ const ActivityTable = () => {
         setTotalPages(Math.ceil(data.length / 10));
       })
       .catch((error) => {
-        console.error("Error loading activities:", error);
+        alert("Search problem:" + error);
       });
   };
 
@@ -84,7 +95,7 @@ const ActivityTable = () => {
         setTotalPages(Math.ceil(data.length / 10));
       })
       .catch((error) => {
-        console.error("Error loading activities:", error);
+        alert("Search problem:" + error);
       });
   };
 
@@ -95,7 +106,7 @@ const ActivityTable = () => {
         setTotalPages(Math.ceil(data.length / 10));
       })
       .catch((error) => {
-        console.error("Error loading activities:", error);
+        alert("Serch problem:" + error);
       });
   };
 
@@ -106,7 +117,7 @@ const ActivityTable = () => {
         setTotalPages(Math.ceil(data.length / 10));
       })
       .catch((error) => {
-        console.error("Error loading activities:", error);
+        alert("Error loading activities:" + error);
       });
   };
 
@@ -116,7 +127,7 @@ const ActivityTable = () => {
         setActivityTypes(data);
       })
       .catch((error) => {
-        console.error("Error loading activity types:", error);
+        alert("Error loading activity types:" + error);
       });
   };
 
@@ -147,7 +158,7 @@ const ActivityTable = () => {
       setCurrentActivity(data)
     })
     .catch((error) => {
-      console.error("Error loading activity types:", error);
+      alert("Update activity problem:" + error);
     });
   };
 
@@ -155,7 +166,7 @@ const ActivityTable = () => {
     console.log(id);
     DeleteActivityCtrl(id)
     .catch((error) => {
-      console.error("Error loading activity types:", error);
+      alert("Problem with delete:" + error);
     });
   };
 
@@ -184,9 +195,6 @@ const ActivityTable = () => {
   return (
     <div>
       <Container maxWidth="md" className="container">
-        <Typography variant="h5" component="h2" className="title">
-          Activity List
-        </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
           <TextField
             label="By Name"
@@ -236,11 +244,14 @@ const ActivityTable = () => {
           <IconButton onClick={handleSearchByDate}>
             <SearchIcon />
           </IconButton>
+          <FormControl variant="outlined" className="selectFormControl" required>
+          <InputLabel id="activityTypeId-label">Activity type</InputLabel>
           <Select
             labelId="activityTypeId-label"
             value={selectedType}
             onChange={handleTypeChange}
             label="Activity Type"
+            className="select"
           >
             {activityTypes.map((type) => (
               <MenuItem key={type.Id} value={type.Id}>
@@ -248,13 +259,14 @@ const ActivityTable = () => {
               </MenuItem>
             ))}
           </Select>
+          </FormControl>
           <IconButton onClick={handleSearchByType}>
             <SearchIcon />
           </IconButton>
         </Box>
 
-        <TableContainer component={Paper}>
-          <Table className="table">
+        <TableContainer component={Paper} className={classes.tableContainer}>
+          <Table className="table" stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>

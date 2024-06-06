@@ -35,4 +35,13 @@
   .pagination button {
     margin: 0 10px;
   }
+
+  .selectFormControl {
+    width: 200px; 
+  }
+  
+  .select {
+    width: 100%;
+  }
+  
   

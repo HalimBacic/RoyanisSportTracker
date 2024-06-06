@@ -51,6 +51,7 @@ namespace SportActivityAPI.Service.Implementations
         {
             var activities = _unitOfWork.ActivityRepository.FindBy(x => x.User.Username == username);
 
+            //If user send date and activity in one search
             if (date is not null && activityType is not null)
             {
                 activities = activities.Where(x => x.DateActivity == date && x.ActivityTypeId == activityType);
@@ -71,6 +72,7 @@ namespace SportActivityAPI.Service.Implementations
         {
             var activities = _unitOfWork.ActivityRepository.FindBy(x => x.User.Username == username);
 
+            //if user want search by name and description
             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description))
             {
                 activities = activities.Where(x => x.Name.Contains(name) && x.Description.Contains(description));

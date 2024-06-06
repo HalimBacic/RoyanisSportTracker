@@ -11,8 +11,8 @@ import {
   FormControl,
 } from "@mui/material";
 import "../AddTarget/AddTarget.css";
-import { GetAllActivitiesCtrl } from '../../controllers/ActivityController';
-import { AddTargetCtrl } from '../../controllers/UserTargetController';
+import { GetAllActivitiesCtrl } from "../../controllers/ActivityController";
+import { AddTargetCtrl } from "../../controllers/UserTargetController";
 
 const AddTarget = ({ token }) => {
   const [formData, setFormData] = useState({
@@ -31,14 +31,14 @@ const AddTarget = ({ token }) => {
     const fetchActivities = async () => {
       try {
         const act = await GetAllActivitiesCtrl(token);
-        setActivityTypes(act); 
+        setActivityTypes(act);
       } catch (error) {
-        alert('Failed to fetch activities:', error);
+        alert("Failed to fetch activities:", error);
       }
     };
 
     fetchActivities();
-  }, [token]); 
+  }, [token]);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -61,10 +61,14 @@ const AddTarget = ({ token }) => {
     const targetData = {
       dateActivity: formData.dateActivity,
       target: parseInt(formData.target, 10),
-      type: formData.type,  
-      activityTypeId: parseInt(formData.activityTypeId, 10)  
+      type: formData.type,
+      activityTypeId: parseInt(formData.activityTypeId, 10),
     };
-    await AddTargetCtrl(targetData);
+    try {
+      await AddTargetCtrl(targetData);
+    } catch (error) {
+      alert("Problem with add target:" + error);
+    }
   };
 
   return (

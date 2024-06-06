@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SportActivityAPI</name>
+    </assembly>
+    <members>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.GetActivitiesForUser(System.Int32,System.Int32)">
+            <summary>
+            Return all activities for user. Username can be find in token if authorized.
+            </summary>
+            <param name="currentPage">Current page for paging options</param>
+            <param name="pages">All pages for data</param>
+            <returns>List of activities from database</returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.GetActivitiesSearch(SportActivityAPI.Service.Models.Requests.SearchRequest)">
+            <summary>
+            Find activities by name and description. Can be used for one or both parametres.
+            </summary>
+            <param name="request">Request contains Name and Description for search</param>
+            <returns>List of activities with conditions in request</returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.GetActivitiesByDate(System.Nullable{System.DateOnly})">
+            <summary>
+            Returns activities with date in endpoint path
+            </summary>
+            <param name="date">Date for search</param>
+            <returns>
+            List of activities with date in request
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.GetActivitiesByType(System.Int32)">
+            <summary>
+            Returns activities by type in endpoint path
+            </summary>
+            <param name="type">Type for search</param>
+            <returns>
+            List of activities with type in request
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.GetActivities">
+            <summary>
+            Endpoint to get all activities in database. Currently not in use
+            </summary>
+            <returns>
+            List of all activities in database. 
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.CreateActivityForUser(SportActivityAPI.Service.Models.Requests.ActivityRequest)">
+            <summary>
+            Create activity for user
+            </summary>
+            <param name="request">Request contains informations for new activity for user</param>
+            <returns>
+            Created activity
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.UpdateActivityForUser(SportActivityAPI.Service.Models.Requests.ActivityRequest)">
+            <summary>
+            Update activity for user
+            </summary>
+            <param name="request">Updated activity request.</param>
+            <returns>
+            Updated activity
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.ActivityController.DeleteActivityForUser(System.Int32)">
+            <summary>
+            Endpoint for delete activity
+            </summary>
+            <param name="activityId">ActivityId is id for activity in database.</param>
+            <returns>
+            Status code if deteled. 
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserController.RegisterUser(SportActivityAPI.Service.Models.Requests.UserRequest)">
+            <summary>
+            Controller for register user. 
+            User register yourself with username, email and password. All is unique in database
+            </summary>
+            <param name="request">Contains informations about user registration. 
+            Id is parameter for database input and its automaticaly generated. 
+            Not required in UserReguest
+            </param>
+            <returns>
+            If successfull, service return email and username for registered user.
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserController.LoginUser(SportActivityAPI.Service.Models.Requests.UserRequest)">
+            <summary>
+            Method for login user.
+            </summary>
+            <param name="request">
+             UserRequest must contain username and password.
+            </param>
+            <returns>
+            If password and username is ok, return token for authentification on servises
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserController.Refresh(SportActivityAPI.Service.Models.Requests.RefreshUserTokenRequest)">
+            <summary>
+            Refresh token for user. Currently not in use
+            </summary>
+            <param name="refreshModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserTargetController.AddTarget(SportActivityAPI.Service.Models.Requests.UserHasTargetRequest)">
+            <summary>
+            Create new activity for user
+            </summary>
+            <param name="request">
+            Request is a model to add new target in database
+            </param>
+            <returns>
+            Informations about new target in database
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserTargetController.GetAllTargets(System.Int32,System.Int32)">
+            <summary>
+            Endpoint to get targets for user
+            </summary>
+            <param name="currentPage">Current page for pagination</param>
+            <param name="pages">All pages in pagination</param>
+            <returns>
+            List of all targets for user
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserTargetController.GetAllTargetsFiltered(System.Boolean)">
+            <summary>
+            Return finished targets
+            </summary>
+            <param name="finished">bool parameter. True for finished, false for unfinished</param>
+            <returns>
+            List of user targets which is finished or unfinished
+            </returns>
+        </member>
+        <member name="M:SportActivityAPI.Controllers.UserTargetController.DeleteTarget(SportActivityAPI.Service.Models.Requests.DeleteUserTargetRequest)">
+            <summary>
+            Endpoint for delete targets. Not in use currenty
+            </summary>
+            <param name="request">All keys for delete user target from database</param>
+            <returns>
+            Status code if deleted target
+            </returns>
+        </member>
+    </members>
+</doc>
