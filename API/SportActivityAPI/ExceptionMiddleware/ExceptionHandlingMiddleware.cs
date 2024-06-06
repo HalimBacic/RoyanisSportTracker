@@ -1,4 +1,5 @@
-﻿using SportActivityAPI.Share.Exceptions;
+﻿using log4net;
+using SportActivityAPI.Share.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -8,6 +9,7 @@ namespace SportActivityAPI.ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ExceptionHandlingMiddleware));
 
         public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
         {
@@ -29,6 +31,7 @@ namespace SportActivityAPI.ExceptionMiddleware
 
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
+            _logger.LogDebug(exception.Message, exception);
             context.Response.ContentType = "application/json";
             var response = context.Response;
 

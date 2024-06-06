@@ -1,3 +1,5 @@
+using log4net.Config;
+using log4net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SportActivityAPI;
@@ -5,6 +7,7 @@ using SportActivityAPI.ExceptionMiddleware;
 using SportActivityAPI.Repository.Extension;
 using SportActivityAPI.Service.Implementations;
 using SportActivityAPI.Service.Interfaces;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .Build();
+
+var loggerRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+XmlConfigurator.Configure(loggerRepository, new FileInfo("log4net.config"));
+ILog logger = LogManager.GetLogger(typeof(Program));
 
 builder.Services.AddControllers();
 

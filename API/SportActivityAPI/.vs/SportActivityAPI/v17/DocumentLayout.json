@@ -3,8 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\exceptionmiddleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:exceptionmiddleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3A5066-3A3D-4CFC-8D0C-F6F30FC86675}|..\\SportActivityAPI.Service\\SportActivityAPI.Service.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi.service\\extensions\\cryptoextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3A5066-3A3D-4CFC-8D0C-F6F30FC86675}|..\\SportActivityAPI.Service\\SportActivityAPI.Service.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi.service\\implementations\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|solutionrelative:controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D1A72214-4C48-4347-BD07-4F8B76D19770}|SportActivityAPI.csproj|c:\\users\\bacic\\documents\\royanis\\api\\sportactivityapi\\log4net.config||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -26,26 +48,104 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "MappingProfile.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\MappingProfile.cs",
+              "RelativeToolTip": "MappingProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T12:41:29.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "log4net.config",
               "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\log4net.config",
               "RelativeDocumentMoniker": "log4net.config",
               "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\log4net.config",
               "RelativeToolTip": "log4net.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-06-06T12:40:33.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CryptoExtension.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Extensions\\CryptoExtension.cs",
+              "RelativeDocumentMoniker": "..\\SportActivityAPI.Service\\Extensions\\CryptoExtension.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Extensions\\CryptoExtension.cs",
+              "RelativeToolTip": "..\\SportActivityAPI.Service\\Extensions\\CryptoExtension.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T12:30:24.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\ExceptionMiddleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "ExceptionMiddleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\ExceptionMiddleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "ExceptionMiddleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwCcAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T07:40:00.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ActivityController.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Controllers\\ActivityController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ActivityController.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Controllers\\ActivityController.cs",
+              "RelativeToolTip": "Controllers\\ActivityController.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAASwIsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T07:40:00.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ActivityService.cs",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Implementations\\ActivityService.cs",
+              "RelativeDocumentMoniker": "..\\SportActivityAPI.Service\\Implementations\\ActivityService.cs",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI.Service\\Implementations\\ActivityService.cs",
+              "RelativeToolTip": "..\\SportActivityAPI.Service\\Implementations\\ActivityService.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAASwHIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T10:37:05.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "log4net.config",
+              "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\log4net.config",
+              "RelativeDocumentMoniker": "log4net.config",
+              "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\log4net.config",
+              "RelativeToolTip": "log4net.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2024-06-06T10:10:10.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\bacic\\Documents\\Royanis\\API\\SportActivityAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAEUAAAAAAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAwBUAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T10:09:20.482Z",
               "EditorCaption": ""
